@@ -1,5 +1,21 @@
 .App {
   text-align: center;
+  height: 100vh;
+  color: white;
+}
+
+.icon {
+  padding-right: 20px;
+  vertical-align: super;
+}
+
+.iconAlign {
+  vertical-align: super;
+}
+
+.iconText {
+  display: "inline-block";
+  vertical-align: "bottom";
 }
 
 .App-logo {
