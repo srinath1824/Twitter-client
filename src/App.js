@@ -3,8 +3,8 @@ import "./App.css";
 import { Grid } from "@material-ui/core";
 import Login from "./components/Login";
 import SearchIcon from "@material-ui/icons/Search";
-import SupervisorAccountIcon from "@material-ui/icons/SupervisorAccount";
-import ChatIcon from "@material-ui/icons/Chat";
+import PeopleOutlineIcon from "@material-ui/icons/PeopleOutline";
+import ModeCommentOutlinedIcon from "@material-ui/icons/ModeCommentOutlined";
 
 function App() {
   return (
@@ -30,14 +30,14 @@ function App() {
                   Follow your Intrests.
                 </h4>
                 <br />
-                <SupervisorAccountIcon fontSize="large" className="icon" />
+                <PeopleOutlineIcon fontSize="large" className="icon" />
                 <h4
                   style={{ display: "inline-block", verticalAlign: "bottom" }}
                 >
                   Hear what people are talking about.
                 </h4>
                 <br />
-                <ChatIcon fontSize="large" className="icon" />
+                <ModeCommentOutlinedIcon fontSize="large" className="icon" />
                 <h4
                   style={{ display: "inline-block", verticalAlign: "bottom" }}
                 >
