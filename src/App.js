@@ -15,6 +15,7 @@ class App extends Component {
   render() {
     console.log(this.props.authenticated);
     return (
+      //comment this to skip login
       <div>
         {!this.props.authenticated ? (
           <Grid container>
@@ -82,6 +83,8 @@ class App extends Component {
           <Dashboard />
         )}
       </div>
+      //uncomment this to got to home page directly
+      // <Dashboard />
     );
   }
 }

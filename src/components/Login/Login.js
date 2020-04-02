@@ -29,7 +29,7 @@ class Login extends Component {
       .then(res => {
         console.log("RESPONSE", res);
         if (res.data["x-auth-token"].length > 0) {
-          localStorage.setItem("x-auth-token", res.data["x-auth-token"]);
+          sessionStorage.setItem("x-auth-token", res.data["x-auth-token"]);
           this.props.authenticate(true);
         } else {
           errorElement.style.display = "block";
