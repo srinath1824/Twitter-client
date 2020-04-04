@@ -1,27 +1,17 @@
 import React, { Component } from "react";
-import { Grid, Button, Paper, Tabs, Tab } from "@material-ui/core";
+import { Grid, Button, Paper } from "@material-ui/core";
 import CloudDoneIcon from "@material-ui/icons/CloudDone";
 import LocationOnOutlinedIcon from "@material-ui/icons/LocationOnOutlined";
 import InsertLinkOutlinedIcon from "@material-ui/icons/InsertLinkOutlined";
 import DateRangeOutlinedIcon from "@material-ui/icons/DateRangeOutlined";
 import HomeRight from "./HomeRight";
+import DashboardTabs from "../DashboardTabs/DashboardTabs";
 import "./Home.css";
 
 class Home extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      tabValue: ""
-    };
-  }
-
-  handleChange(event, value) {
-    console.log(value);
-    this.setState({ tabValue: value });
-  }
   render() {
     return (
-      <Grid container style={{ margin: "auto", width: "70%" }}>
+      <Grid container style={{ margin: "auto", width: "75%" }}>
         <Grid item xs={8} style={{ height: "250px" }}>
           <img
             src={`${process.env.PUBLIC_URL}/twitter_dashboard.jpeg`}
@@ -118,19 +108,7 @@ class Home extends Component {
                 </Grid>
               </Grid>
             </Grid>
-            <Tabs
-              indicatorColor="primary"
-              textColor="primary"
-              value={this.state.tabValue}
-              onChange={() => this.handleChange}
-              centered
-              // aria-label="disabled tabs example"
-            >
-              <Tab label="Tweets" value="Tweets" />
-              <Tab label="Tweets & replies" value="Tweets & replies" />
-              <Tab label="Media" value="Media" />
-              <Tab label="Likes" value="Likes" />
-            </Tabs>
+            <DashboardTabs />
           </Grid>
         </Grid>
         <Grid item xs={4}>
