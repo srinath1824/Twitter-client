@@ -24,7 +24,7 @@ class App extends Component {
                 className="App"
                 style={{
                   backgroundColor: "#42abf5",
-                  backgroundImage: `url(${process.env.PUBLIC_URL}/logo.png)`
+                  backgroundImage: `url(${process.env.PUBLIC_URL}/logo.png)`,
                 }}
               >
                 <Grid container>
@@ -34,14 +34,14 @@ class App extends Component {
                       style={{
                         textAlign: "left",
                         position: "absolute",
-                        top: "40%"
+                        top: "40%",
                       }}
                     >
                       <SearchIcon fontSize="large" className="icon" />
                       <h4
                         style={{
                           display: "inline-block",
-                          verticalAlign: "bottom"
+                          verticalAlign: "bottom",
                         }}
                       >
                         Follow your Intrests.
@@ -51,7 +51,7 @@ class App extends Component {
                       <h4
                         style={{
                           display: "inline-block",
-                          verticalAlign: "bottom"
+                          verticalAlign: "bottom",
                         }}
                       >
                         Hear what people are talking about.
@@ -64,7 +64,7 @@ class App extends Component {
                       <h4
                         style={{
                           display: "inline-block",
-                          verticalAlign: "bottom"
+                          verticalAlign: "bottom",
                         }}
                       >
                         Join the conversation.
@@ -90,7 +90,7 @@ class App extends Component {
 }
 function mapStateToProps(state) {
   return {
-    authenticated: state.auth.isAuthenticated
+    authenticated: state.auth.isAuthenticated,
   };
 }
 

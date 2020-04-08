@@ -10,6 +10,8 @@ import Tweets from "./Tweets";
 import axios from "axios";
 import { SERVER_URL } from "../constants";
 import Skeleton from "@material-ui/lab/Skeleton";
+import { connect } from "react-redux";
+import actionTypes from "../actions";
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -31,47 +33,48 @@ function TabPanel(props) {
 TabPanel.propTypes = {
   children: PropTypes.node,
   index: PropTypes.any.isRequired,
-  value: PropTypes.any.isRequired
+  value: PropTypes.any.isRequired,
 };
 
 function a11yProps(index) {
   return {
     id: `full-width-tab-${index}`,
-    "aria-controls": `full-width-tabpanel-${index}`
+    "aria-controls": `full-width-tabpanel-${index}`,
   };
 }
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles((theme) => ({
   root: {
     backgroundColor: theme.palette.background.paper,
     width: "100%",
-    marginTop: "20px"
-  }
+    marginTop: "20px",
+  },
 }));
 
-export default function DashboardTabs() {
+function DashboardTabs(props) {
   const classes = useStyles();
   const theme = useTheme();
   const [value, setValue] = React.useState(0);
-  const [tweets, setTweets] = React.useState([]);
+  const { tweets, setTweetsData } = props;
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
 
-  const handleChangeIndex = index => {
+  const handleChangeIndex = (index) => {
     setValue(index);
   };
 
   useEffect(async () => {
     let token = sessionStorage.getItem("x-auth-token");
     console.log("token", token);
+    //axios.defaults.headers.common["x-auth-token"] = token;
     await axios
-      .get(`${SERVER_URL}/posts/tweets`, { headers: { "x-auth-token": token } })
-      .then(res => {
-        setTweets(res.data);
+      .post(`${SERVER_URL}/posts/tweets`, { "x-auth-token": token })
+      .then((res) => {
+        setTweetsData(res.data);
       })
-      .catch(err => {
+      .catch((err) => {
         console.log("ERROR in fetching tweets data", err);
       });
   }, []);
@@ -97,7 +100,7 @@ export default function DashboardTabs() {
         onChangeIndex={handleChangeIndex}
       >
         <TabPanel value={value} index={0} dir={theme.direction}>
-          {tweets.length === 0 ? (
+          {tweets.length > 0 ? (
             <Tweets tweetsData={tweets} />
           ) : (
             <div>
@@ -126,3 +129,18 @@ export default function DashboardTabs() {
     </div>
   );
 }
+
+function mapStateToProps(state) {
+  return {
+    tweets: state.dashboard.tweets,
+  };
+}
+
+function mapDispatchToProps(dispatch) {
+  return {
+    setTweetsData: (data) =>
+      dispatch({ type: actionTypes.SET_DASHBOARD_TWEETS, data }),
+  };
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(DashboardTabs);

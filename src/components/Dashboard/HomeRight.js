@@ -4,8 +4,9 @@ import {
   CardContent,
   CardActions,
   Button,
-  Typography
+  Typography,
 } from "@material-ui/core";
+import PhotoGrid from "../PhotoGrid";
 
 class HomeRight extends Component {
   render() {
@@ -36,12 +37,19 @@ class HomeRight extends Component {
                 backgroundColor: "#1eabe8",
                 borderRadius: "100px",
                 color: "white",
-                fontWeight: "bold"
+                fontWeight: "bold",
               }}
             >
               Sign up
             </Button>
           </CardActions>
+        </Card>
+        <Card
+          style={{ borderRadius: "20px", marginTop: "20px", height: "20%" }}
+        >
+          <CardContent>
+            <PhotoGrid />
+          </CardContent>
         </Card>
       </div>
     );
